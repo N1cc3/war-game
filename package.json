@@ -1,0 +1,11 @@
+{
+  "name": "war-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:N1cc3/war-game.git",
+  "author": "Niclas Lindgren <niclaslindgren91@hotmail.com>",
+  "contributors": [
+    "Robert Ekholm <robert@ekholmgroup.fi>"
+  ],
+  "license": "MIT"
+}
