@@ -1,13 +1,16 @@
 {
   "name": "war-game",
   "version": "2019.1",
-  "main": "index.js",
   "repository": "git@github.com:N1cc3/war-game.git",
   "author": "Niclas Lindgren <niclaslindgren91@hotmail.com>",
   "contributors": [
     "Robert Ekholm <robert@ekholmgroup.fi>"
   ],
   "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js"
+  },
   "devDependencies": {
     "typescript": "3.7.3"
   }
