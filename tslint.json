@@ -4,7 +4,9 @@
   "jsRules": {},
   "rules": {
     "semicolon": false,
-    "quotemark": false
+    "quotemark": false,
+    "curly": [true, "ignore-same-line"],
+    "object-literal-key-quotes": false
   },
   "rulesDirectory": []
 }
