@@ -1,1 +1,9 @@
-console.log("Hello World!");
+console.log('Hello World!')
+
+const fun = () => {
+  const asd = 2
+
+  console.log(asd)
+}
+
+fun()
