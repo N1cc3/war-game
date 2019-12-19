@@ -6,7 +6,8 @@
     "semicolon": false,
     "quotemark": false,
     "curly": [true, "ignore-same-line"],
-    "object-literal-key-quotes": false
+    "object-literal-key-quotes": false,
+    "no-console": false
   },
   "rulesDirectory": []
 }
