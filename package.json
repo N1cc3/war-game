@@ -10,8 +10,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon",
-    "typecheck": "tslint -c tslint.json -p tsconfig.json --fix"
+    "start": "nodemon"
   },
   "husky": {
     "hooks": {
@@ -19,7 +18,11 @@
     }
   },
   "lint-staged": {
-    "*.ts": "yarn typecheck"
+    "*.ts": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@types/express": "4.17.2",

@@ -1,8 +1,8 @@
 import bodyParser from 'body-parser'
 import express from 'express'
 import mongoose from 'mongoose'
-import Player from './Player'
 import Game from './Game'
+import Player from './Player'
 
 const app = express()
 const port = 8080
@@ -32,7 +32,6 @@ app.post('/games/save', (req, res) => {
     .then(() => res.send('Saved'))
     .catch(() => res.send('Failed'))
 })
-
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`)
