@@ -2,7 +2,9 @@ import bodyParser from 'body-parser'
 import express from 'express'
 import mongoose from 'mongoose'
 import Game from './Game'
+import Hex from './hexgrid/Hex'
 import Player from './Player'
+import Unit from './Unit'
 
 const app = express()
 const port = 8080
@@ -31,6 +33,23 @@ app.post('/games/save', (req, res) => {
     .save()
     .then(() => res.send('Saved'))
     .catch(() => res.send('Failed'))
+})
+
+app.post('/unit', (req, res) => {
+  new Unit({
+    position: { x: 1, y: 2 },
+    hp: 100,
+  })
+    .save()
+    .then(() => res.send('Saved'))
+    .catch(() => res.send('Failed'))
+})
+
+app.get('/units', (req, res) => {
+  Unit.find().then(units => {
+    const unit = units[0]
+    res.send(new Hex(unit.position.x, unit.position.y).neighbors())
+  })
 })
 
 app.listen(port, () => {
