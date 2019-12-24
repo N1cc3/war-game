@@ -10,7 +10,8 @@ export const HexSchema = new Schema<Hex>({
 export const GameModel = mongoose.model<Document & Game>(
   'Game',
   new Schema({
-    name: { type: String, required: true, unique: true },
+    tickTime: { type: Number, required: true },
+    lastTickTime: { type: Date, required: true },
   })
 )
 

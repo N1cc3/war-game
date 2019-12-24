@@ -3,15 +3,16 @@ import Game, { Player, Unit, UnitType } from './Game'
 
 describe('Game', () => {
   test('lastTickTime updates on simulate', () => {
-    const game = new Game(100, 0)
+    const startTime = new Date('2020-01-01T00:00:00.000Z')
+    const game = new Game(15, startTime)
 
     game.simulate()
 
-    expect(game.lastTickTime()).toBe(100)
+    expect(game.lastTickTime().toISOString()).toBe('2020-01-01T00:15:00.000Z')
 
     game.simulate()
 
-    expect(game.lastTickTime()).toBe(200)
+    expect(game.lastTickTime().toISOString()).toBe('2020-01-01T00:30:00.000Z')
   })
 
   describe('Combat', () => {
@@ -21,7 +22,7 @@ describe('Game', () => {
       const soldier: UnitType = { name: 'Soldier', damage: 1, maxHp: 5, speed: 1 }
       const unit1: Unit = { hp: 5, position: new Hex(0, 0), owner: player1, type: soldier }
       const unit2: Unit = { hp: 3, position: new Hex(0, 0), owner: player2, type: soldier }
-      const game = new Game(100, 0, [unit1, unit2])
+      const game = new Game(1, new Date('2020-01-01'), [unit1, unit2])
 
       game.simulate()
 
