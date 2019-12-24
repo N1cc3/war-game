@@ -7,15 +7,18 @@ import { GameConfig, GameModel, PlayerModel, UnitModel } from './mongo'
 
 mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true })
 
-const simulateGame = async () => {
+const gameLoop = async () => {
   console.log('Simulating game...')
-  const savedGame = await GameModel.findOne()
+  let savedGame = await GameModel.findOne()
   if (!savedGame) return // Game has disappeared from database
 
-  const game = new Game(savedGame.lastTickTime, savedGame.tickMs)
+  const { lastTickTime, tickMs } = savedGame
+  const game = new Game(lastTickTime, tickMs)
   game.simulate()
   savedGame.lastTickTime = game.lastTickTime()
-  await savedGame.save()
+  savedGame = await savedGame.save()
+
+  setTimeout(gameLoop, Math.max(0, savedGame.lastTickTime.valueOf() + savedGame.tickMs - new Date().valueOf()))
   console.log('Simulating game... DONE')
 }
 
@@ -27,14 +30,13 @@ const initGame = async () => {
     savedGame = await new GameModel({ lastTickTime: new Date(), tickMs: 1 * 1000 } as GameConfig).save()
   }
 
-  const game = new Game(savedGame.lastTickTime, savedGame.tickMs)
-
+  const { lastTickTime, tickMs } = savedGame
+  const game = new Game(lastTickTime, tickMs)
   while (new Date().valueOf() > game.lastTickTime().valueOf() + game.tickMs) game.simulate()
-
   savedGame.lastTickTime = game.lastTickTime()
-  await savedGame.save()
+  savedGame = await savedGame.save()
 
-  setInterval(simulateGame, savedGame.tickMs)
+  setTimeout(gameLoop, Math.max(0, savedGame.lastTickTime.valueOf() + savedGame.tickMs - new Date().valueOf()))
   console.log('Initializing game... DONE')
 }
 

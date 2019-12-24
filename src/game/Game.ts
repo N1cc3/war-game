@@ -1,5 +1,4 @@
 import Hex from '../hexgrid/Hex'
-import { plusMillis } from '../utils'
 
 export default class Game {
   constructor(private _lastTickTime: Date, readonly tickMs: number, private _units: Unit[] = []) {}
@@ -9,7 +8,7 @@ export default class Game {
 
   readonly simulate = () => {
     this._units.forEach(this.fight)
-    this._lastTickTime = plusMillis(this._lastTickTime, this.tickMs)
+    this._lastTickTime = new Date(this._lastTickTime.valueOf() + this.tickMs)
   }
 
   private fight = (attacker: Unit) => {
