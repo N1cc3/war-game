@@ -18,8 +18,8 @@
         "multiline": {
           "objects": "always",
           "arrays": "always",
-          "functions": "always",
-          "typeLiterals": "ignore"
+          "functions": "never",
+          "typeLiterals": "never"
         }
       }
     ],
@@ -27,7 +27,9 @@
     "max-classes-per-file": false,
     "variable-name": {
       "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
-    }
+    },
+    "member-ordering": false,
+    "member-access": [true, "no-public"]
   },
   "rulesDirectory": []
 }
