@@ -15,14 +15,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn test"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "*.ts": [
       "tslint --fix",
       "prettier --write",
-      "git add"
+      "git add",
+      "yarn test --findRelatedTests"
     ]
   },
   "jest": {
