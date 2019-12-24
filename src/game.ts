@@ -1,9 +1,7 @@
 import { Game } from './domain'
 
-export const simulateTick = (game: Game): Game => {
-  const { lastTickTime, tickTime } = game
-  return {
-    lastTickTime: lastTickTime + tickTime,
-    tickTime,
-  }
+export const simulateTick = (game: Game) => {
+  const { tickTime, units, unitTypes, players } = game
+
+  game.lastTickTime += tickTime
 }
