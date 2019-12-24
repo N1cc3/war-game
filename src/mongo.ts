@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose'
-import Game, { Player, Unit, UnitType } from './game/Game'
+import { Player, Unit, UnitType } from './game/Game'
 import Hex from './hexgrid/Hex'
 
 export const HexSchema = new Schema<Hex>({
@@ -7,11 +7,16 @@ export const HexSchema = new Schema<Hex>({
   y: { type: Number, required: true },
 })
 
-export const GameModel = mongoose.model<Document & Game>(
+export type GameConfig = {
+  lastTickTime: Date
+  tickMs: number
+}
+
+export const GameModel = mongoose.model<Document & GameConfig>(
   'Game',
   new Schema({
-    tickTime: { type: Number, required: true },
     lastTickTime: { type: Date, required: true },
+    tickMs: { type: Number, required: true },
   })
 )
 
