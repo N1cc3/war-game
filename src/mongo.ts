@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose'
-import { Game, Player, Unit, UnitType } from './domain'
+import Game, { Player, Unit, UnitType } from './game/Game'
 import Hex from './hexgrid/Hex'
 
 export const HexSchema = new Schema<Hex>({
@@ -11,7 +11,7 @@ export const GameModel = mongoose.model<Document & Game>(
   'Game',
   new Schema({
     name: { type: String, required: true, unique: true },
-  }),
+  })
 )
 
 export const PlayerModel = mongoose.model<Document & Player>(
@@ -19,7 +19,7 @@ export const PlayerModel = mongoose.model<Document & Player>(
   new Schema({
     name: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-  }),
+  })
 )
 
 export const UnitModel = mongoose.model<Document & Unit>(
@@ -29,7 +29,7 @@ export const UnitModel = mongoose.model<Document & Unit>(
     position: { type: HexSchema, required: true },
     hp: { type: Number, required: true },
     ownerPlayerId: { type: String },
-  }),
+  })
 )
 
 export const UnitTypeModel = mongoose.model<Document & UnitType>(
@@ -39,5 +39,5 @@ export const UnitTypeModel = mongoose.model<Document & UnitType>(
     damage: { type: Number, required: true },
     maxHp: { type: Number, required: true },
     speed: { type: Number, required: true },
-  }),
+  })
 )

@@ -16,7 +16,7 @@ app.get('/players', (req, res) => {
 })
 
 app.get('/games', (req, res) => {
-  GameModel.find().then(games => res.send(games.map(({ name }) => ({ name }))))
+  GameModel.find().then(games => res.send(games.map(({ lastTickTime }) => ({ lastTickTime }))))
 })
 
 app.post('/players/save', (req, res) => {
