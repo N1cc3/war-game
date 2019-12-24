@@ -1,7 +1,8 @@
 import Hex from './hexgrid/Hex'
 
 export type Game = {
-  name: string
+  lastTickTime: number // When last tick was simulated, epoch seconds
+  tickTime: number // Time between ticks, seconds
 }
 export type Unit = {
   unitTypeId: string
