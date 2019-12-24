@@ -3,8 +3,8 @@ export const range = (from: number, to: number) =>
     .fill(0)
     .map((_, idx) => idx)
 
-export const plusMinutes = (date: Date, minutes: number) => {
+export const plusMillis = (date: Date, ms: number) => {
   const newDate = new Date(date.valueOf())
-  newDate.setMinutes(date.getMinutes() + minutes)
+  newDate.setMilliseconds(date.getMilliseconds() + ms)
   return newDate
 }
