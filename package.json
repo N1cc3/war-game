@@ -32,10 +32,18 @@
       "^.+\\.ts$": "ts-jest"
     }
   },
+  "browserslist": "last 2 versions, not dead",
   "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
     "@types/express": "4.17.2",
     "@types/jest": "24.0.24",
     "@types/mongoose": "5.5.34",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "babel-loader": "^8.0.6",
     "husky": "3.1.0",
     "jest": "24.9.0",
     "lint-staged": "9.5.0",
@@ -44,11 +52,15 @@
     "ts-jest": "24.2.0",
     "ts-node": "8.5.4",
     "tslint": "5.20.1",
-    "typescript": "3.7.3"
+    "typescript": "3.7.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {
     "body-parser": "1.19.0",
     "express": "4.17.1",
-    "mongoose": "5.8.2"
+    "mongoose": "5.8.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }
