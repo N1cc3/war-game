@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "target": "es5",
     "strict": true,
     "module": "commonjs",
@@ -8,7 +8,8 @@
     "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "build",
-    "types": ["node", "jest"]
+    "types": ["node", "jest"],
+    "jsx": "react"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "front/index.jsx"]
 }

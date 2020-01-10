@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser'
 import express from 'express'
 import mongoose from 'mongoose'
+import path from 'path'
 import Game from './game/Game'
 import Hex from './hexgrid/Hex'
 import { GameConfig, GameModel, PlayerModel, UnitModel } from './mongo'
@@ -45,6 +46,8 @@ const port = 8080
 
 app.use(bodyParser.json())
 
+app.use(express.static(path.join(__dirname, 'client/build')))
+
 app.get('/players', (req, res) => {
   PlayerModel.find().then(players => res.send(players.map(({ name }) => ({ name }))))
 })
@@ -82,6 +85,10 @@ app.get('/units', (req, res) => {
     const unit = units[0]
     res.send(new Hex(unit.position.x, unit.position.y).neighbors())
   })
+})
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/index.html'))
 })
 
 initGame().then(() => {
