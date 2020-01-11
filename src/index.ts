@@ -1,4 +1,5 @@
 import bodyParser from 'body-parser'
+import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
 import path from 'path'
@@ -43,7 +44,7 @@ const initGame = async () => {
 
 const app = express()
 const port = 8080
-
+app.use(cors())
 app.use(bodyParser.json())
 
 app.use(express.static(path.join(__dirname, 'client/build')))
