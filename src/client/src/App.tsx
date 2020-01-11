@@ -1,5 +1,6 @@
 import { Button, Card, Container, Divider, Typography } from '@material-ui/core'
 import React from 'react'
+import { PlayerForm } from './PlayerForm'
 
 export const App = () => (
   <Container>
@@ -13,6 +14,9 @@ export const App = () => (
       <Button variant='contained' color='primary' fullWidth>
         Hello World
       </Button>
+    </Card>
+    <Card>
+      <PlayerForm />
     </Card>
   </Container>
 )
