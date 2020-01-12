@@ -8,7 +8,7 @@ export const PlayerForm = () => {
   return (
     <div>
       <TextField label='Name' color='primary' onChange={e => setName(e.target.value)} />
-      <Button color='secondary' onClick={() => savePlayer({ name })}>
+      <Button color='secondary' onClick={() => savePlayer({ name, password: 'asd' })}>
         Submit
       </Button>
     </div>
